@@ -93,5 +93,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+// Ruta de prueba para verificar que Render responde correctamente
+app.get('/prueba', (req, res) => {
+  res.send('✅ Render está funcionando correctamente');
+});
+
 // Iniciar servidor
-app.listen(PORT, () => console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
