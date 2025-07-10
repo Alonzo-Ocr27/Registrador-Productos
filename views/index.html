@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-main">
         <div class="container">
             <a class="navbar-brand" href="/">Shelfy</a>
@@ -22,12 +20,14 @@
                     <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="/add">Agregar Producto</a></li>
                     <li class="nav-item"><a class="nav-link" href="/edit">Editar Producto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/login">Iniciar Sesión</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-light" href="/register">Registrarse</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logout">Cerrar Sesión</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
     <header class="text-center py-5 bg-light-yellow">
         <div class="container">
             <h1 class="display-4 text-main">Bienvenido a Shelfy</h1>
@@ -35,13 +35,11 @@
         </div>
     </header>
 
-    <!-- Tabla y botón editar -->
     <div class="container my-5">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="text-secondary mb-0">Listado de productos</h2>
             <a href="/edit" class="btn btn-edit">Ir a Editar Productos</a>
         </div>
-
         <table class="table table-hover table-striped shadow">
             <thead class="table-main">
                 <tr>
@@ -54,14 +52,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Producto de ejemplo</td>
-                    <td>Categoría A</td>
-                    <td>10</td>
-                    <td>Nuevo</td>
-                    <td>Proveedor X</td>
-                    <td>01/01/2025</td>
-                </tr>
+                <!-- Productos se cargan desde app.js -->
             </tbody>
         </table>
     </div>
