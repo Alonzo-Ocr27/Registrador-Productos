@@ -25,6 +25,16 @@ function showToast(message) {
 
 /* ---------- lógica principal ---------- */
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Mostrar toast si viene error por acceso denegado
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('error') === 'acceso_denegado') {
+    showToast('❌ Acceso denegado');
+    // Limpiar la query para no mostrarlo otra vez si recarga
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+
   /* ----- PRODUCTOS (add / edit) ----- */
   const isEditPage = window.location.pathname.includes('edit');
   const productForm  = document.getElementById('productForm');
