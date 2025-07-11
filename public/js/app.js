@@ -294,11 +294,21 @@ if (loginForm) {
       welcomeUser.textContent  = '';
     }
 
-    logoutBtn.addEventListener('click', () => {
+    logoutBtn.addEventListener('click', async () => {
+      // Limpiar localStorage primero
       localStorage.removeItem('token');
       localStorage.removeItem('username');
       localStorage.removeItem('role');
-      window.location.href = '/login';
+
+      // Llamar al backend para destruir la sesión y limpiar la cookie
+      try {
+        await fetch('/logout', { method: 'GET', credentials: 'include' });
+      } catch (err) {
+        console.error('❌ Error al cerrar sesión en el servidor', err);
+      }
+
+      // Redirigir
+      window.location.href = '/';
     });
   }
 });

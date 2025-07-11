@@ -124,10 +124,17 @@ router.get('/register', (req, res) => {
   res.sendFile(path.join(__dirname, '../views/register.html'));
 });
 
-// Logout - cerrar sesión
+// Logout - cerrar sesión correctamente
 router.get('/logout', (req, res) => {
-  req.session.destroy(); // Asegúrate de destruir la sesión
-  res.redirect('/login');
+  req.session.destroy(err => {
+    if (err) {
+      console.error('Error al cerrar sesión:', err);
+      return res.status(500).send('❌ No se pudo cerrar la sesión');
+    }
+
+    res.clearCookie('token'); // Elimina también la cookie JWT
+    res.redirect('/login');
+  });
 });
 
 // Middleware para verificar token y extraer usuario
