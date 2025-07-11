@@ -80,11 +80,16 @@ app.get('/logout', (req, res) => {
 });
 
 // Vistas protegidas (requieren autenticación)
+//Vista de agregar producto
 app.get('/add', verificarToken, (req, res) => {
   res.sendFile(path.join(__dirname, 'views', 'add.html'));
 });
 
+// Vista de editar producto
 app.get('/edit', verificarToken, (req, res) => {
+  if (req.user.role !== 'admin') {
+    return res.status(403).send('❌ Acceso denegado');
+  }
   res.sendFile(path.join(__dirname, 'views', 'edit.html'));
 });
 
